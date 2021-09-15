@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -584,36 +584,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Map
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets
+  - Assets/Map
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\Github\LastProject\MediciMerchant
+  m_LastProjectPath: D:\Github\_MediciMerchant\MediciMerchant
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 54540000
-    m_LastClickedID: 21588
-    m_ExpandedIDs: 00000000545400005e540000
+    m_SelectedIDs: 6e520000
+    m_LastClickedID: 21102
+    m_ExpandedIDs: 000000006252000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: CMS
-      m_OriginalName: CMS
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 21600
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 14}
     m_SearchString: 
@@ -627,7 +627,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000054540000
+    m_ExpandedIDs: 0000000062520000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -654,22 +654,22 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000082d8ffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: CJJ Scene
-      m_OriginalName: CJJ Scene
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 21840
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 14}
     m_CreateAssetUtility:
@@ -808,9 +808,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.0174541, y: 2.7836266, z: -6.9669676}
+    m_Target: {x: -5.9538097, y: -10.657518, z: -3.410701}
     speed: 2
-    m_Value: {x: -2.0174541, y: 2.7836266, z: -6.9669676}
+    m_Value: {x: -5.9538097, y: -10.657518, z: -3.410701}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -857,13 +857,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.18642268, y: 0.80331475, z: -0.3220747, w: -0.4649733}
+    m_Target: {x: -0.4491188, y: 0.5437644, z: -0.4382026, w: -0.5573088}
     speed: 2
-    m_Value: {x: -0.18642266, y: 0.8033146, z: -0.32207468, w: -0.46497324}
+    m_Value: {x: -0.44995382, y: 0.54310596, z: -0.43901733, w: -0.55663395}
   m_Size:
-    m_Target: 35.263847
+    m_Target: 20.880932
     speed: 2
-    m_Value: 35.263847
+    m_Value: 20.880932
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -916,23 +916,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c6f4ffff
-      m_LastClickedID: -2874
-      m_ExpandedIDs: 30f6ffff54fbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: e0f9ffff2afaffff34faffff3afaffff50fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Map
+        m_OriginalName: Map
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -1480
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 13}
       m_SearchString: 
