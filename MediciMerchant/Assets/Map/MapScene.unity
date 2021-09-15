@@ -310,6 +310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 2641774820322198870, guid: 3fdece8739674ca4b9157274c433c062, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7122459801518571290, guid: 3fdece8739674ca4b9157274c433c062, type: 3}
       propertyPath: m_RootOrder
       value: 2
