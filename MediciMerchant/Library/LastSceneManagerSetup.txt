@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/CMS/CMS_Scene/CMS_Scene.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
