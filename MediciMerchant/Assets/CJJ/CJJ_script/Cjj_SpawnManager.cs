@@ -8,12 +8,12 @@ public class Cjj_SpawnManager : MonoBehaviour
     public GameObject EnemySpawn;
     public float currenttime = 0;
 
-    TMP_Text ttt;//test
+    //TMP_Text ttt;//test
 
     // Start is called before the first frame update
     void Start()
     {
-        ttt = GameObject.Find("CHECK").GetComponent<TMP_Text>(); //test
+        //ttt = GameObject.Find("CHECK").GetComponent<TMP_Text>(); //test
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class Cjj_SpawnManager : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             
-            ttt.text = "Collusion";//test
+            //ttt.text = "Collusion";//test
             Destroy(gameObject,2);
             Cjj_Player.instance.EnemyEvent();
         }
@@ -43,6 +43,6 @@ public class Cjj_SpawnManager : MonoBehaviour
     private void OnDestroy()
     {
         Cjj_CloudSpawnManager.instance.spawnnumber--;
-        ttt.text = "";//test
+        //ttt.text = "";//test
     }
 }
