@@ -10,8 +10,6 @@ public class YH_TradeManager : MonoBehaviour
     // 상점일때
     // 가방일때
 
-
-
     /// <summary> 
     /// 0  1  2  3  4  5
     /// A  B  X  Y  L  R
@@ -114,28 +112,30 @@ public class YH_TradeManager : MonoBehaviour
 
             // 열린가게 체크
             int storeidx = transform.parent.GetComponent<YH_StoreInteraction>().storeIndex;
-            int itemIndex = -1;
+
             // 가게의 내용물 체크
             if (storeidx != -1)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (storeUI.transform.GetChild(storeidx).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
-                    {
-                        itemIndex = i;
-                        break;
-                    }
-                }
                 //print(storeUI.transform.GetChild(storeidx).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name);
 
                 // 가게의 내용물과 가방의 내용물 확인
                 if (int.Parse(bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text) > 0)
                 {
+                    int itemIndex = -1;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (storeUI.transform.GetChild(storeidx).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
+                        {
+                            itemIndex = i;
+                            break;
+                        }
+                    }
+
                     bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text =
                         (int.Parse(bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text) - 1).ToString();
-                    if (itemIndex != -1)
+
+                    if (itemIndex == -1)
                     {
-                        //가방의 물건을 줄어듬
                         YH_InvenManager.instance.gold += (int)YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice;
                         //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
                     }
@@ -148,5 +148,6 @@ public class YH_TradeManager : MonoBehaviour
 
             }
         }
+
     }
 }
