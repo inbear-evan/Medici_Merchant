@@ -9,7 +9,6 @@ public class Cjj_Player : MonoBehaviour
     public static Cjj_Player instance;
     public GameObject Enemy;
     public int enemynumber = 0;
-    public int Money = 100;
 
     private void Awake()
     {
@@ -18,6 +17,7 @@ public class Cjj_Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
     }
 
     // Update is called once per frame
@@ -41,9 +41,11 @@ public class Cjj_Player : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(touch.position);
             int layer = 1 << LayerMask.NameToLayer("Enemy");
             RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, float.MaxValue, layer))
+            if (Physics.Raycast(ray, out hitInfo, 10, layer))
             {
-                print("아아아아아아");
+                //print("아아아아아아");
+                hitInfo.transform.GetComponent<Cjj_Enemy>().DoDamage(1);
+                
             }
         }
 

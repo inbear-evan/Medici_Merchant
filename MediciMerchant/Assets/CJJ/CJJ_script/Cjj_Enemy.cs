@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cjj_Enemy : MonoBehaviour
 {
     public float currenttime = 0;
+    public float time = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,13 @@ public class Cjj_Enemy : MonoBehaviour
     void PlayerMoneySteal()
     {
         currenttime = currenttime + Time.deltaTime;
-        if (currenttime >= 30)
+        if (currenttime >= time)
         {
             //여기에 돈을 빼았는 그림?
             GameObject damageimage = Instantiate(damages);
             damageimage.transform.position = transform.position;
             // 플레이어의 돈을 빼았는다
-            Cjj_Player.instance.Money = Cjj_Player.instance.Money - (Cjj_Player.instance.Money / 10);
+            YH_InvenManager.instance.gold = YH_InvenManager.instance.gold - (YH_InvenManager.instance.gold / 10);
             // 그리고 사라진다
             Destroy(gameObject);
         }

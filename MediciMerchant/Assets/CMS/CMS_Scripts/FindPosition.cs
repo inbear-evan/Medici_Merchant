@@ -11,12 +11,11 @@ using TMPro;
 public class FindPosition : MonoBehaviour
 {
     public GameObject mediciMap;
+    public GameObject miniMap;
     public Transform marker1;
     Transform destination;
     public Transform player;
     ARTrackedImageManager arTim;
-
-    QR qm;
 
     public LineRenderer lr;
     public NavMeshSurface surface;
@@ -27,6 +26,7 @@ public class FindPosition : MonoBehaviour
     public TMP_Dropdown dp;
 
     public GameObject nada;
+    public GameObject storeObj;
     public TMP_Text testTxt;
     public FindDestination fd;
 
@@ -34,11 +34,12 @@ public class FindPosition : MonoBehaviour
     {
         lr.enabled = false;
         mediciMap.SetActive(false);
+        miniMap.SetActive(false);
+        storeObj.SetActive(false);
         //Instantiate(nada, new Vector3(0, 11, 0), Quaternion.identity);
         //nada.SetActive(false);
         arTim = GetComponent<ARTrackedImageManager>();
         arrivedText.text = "마커 검색";
-        qm = GetComponent<QR>();
     }
 
     private void OnEnable()
@@ -57,6 +58,7 @@ public class FindPosition : MonoBehaviour
         if (DestDistance <= 1f)
         {
             arrivedText.text = "도착";
+            storeObj.SetActive(true);
             fd.D.SetActive(false);
             lr.enabled = false;
         }
@@ -77,12 +79,14 @@ public class FindPosition : MonoBehaviour
                     nada.transform.rotation = markerImg.transform.rotation;
                     if (QR.QM.qrRecog()) 
                     {
+                        miniMap.SetActive(true);
+                        lr.gameObject.SetActive(true);
                         arrivedText.text = "안내 중";
                         testTxt.text = markerImg.referenceImage.name;
                         mediciMap.SetActive(true);
-                        mediciMap.transform.rotation = Quaternion.Euler(0, 180, 0);
+                        //mediciMap.transform.rotation = Quaternion.Euler(0, 180, 0);
                         //mediciMap.transform.position = new Vector3(1*(marker1.position.z), -1, -1 * marker1.position.x);
-                        mediciMap.transform.position = new Vector3(marker1.position.x, -1, marker1.position.z);
+                        //mediciMap.transform.position = new Vector3(marker1.position.x, -1, marker1.position.z);
                         lr.enabled = true;
                         surface.RemoveData();
                         surface.BuildNavMesh();
@@ -101,6 +105,7 @@ public class FindPosition : MonoBehaviour
     public void Destination()
     {
         destination = mediciMap.transform.GetChild(0).GetChild(dp.value - 1);
+        fd.D.transform.position = destination.position;
         //fd.D.GetComponent<MeshRenderer>().enabled = true;
         //Debug.Log(destination.name);
         if (destination.name == "Destination") destination = null;

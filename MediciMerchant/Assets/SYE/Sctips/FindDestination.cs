@@ -16,6 +16,8 @@ public class FindDestination : MonoBehaviour
     Touch touch;
     public Button QRbtn;
     public TMP_Text text;
+    public GameObject routeLine;
+    public GameObject storeObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,25 +59,14 @@ public class FindDestination : MonoBehaviour
         }
     }
 
-    //void DetectCenter()
-    //{
-    //    List<ARRaycastHit> hitInfos = new List<ARRaycastHit>();
-    //    Vector2 screenSize = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-
-    //    if (arManager.Raycast(screenSize, hitInfos, TrackableType.Planes))
-    //    {
-
-    //    }
-
-
-    //}
-
     public void naviOut()
     {
         //D.GetComponent<MeshRenderer>().enabled = false;
         text.text = "µµÂø";
         D.SetActive(false);
         naviYON.SetActive(false);
+        routeLine.SetActive(false);
+        storeObj.SetActive(true);
     }
 
     public void naviDontGo()
