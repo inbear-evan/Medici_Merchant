@@ -25,9 +25,8 @@ public class QR : MonoBehaviour
         trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
         cam = trackedManager.transform.GetChild(0).gameObject;
         txt.text = "마커 검색";
-
     }
-    
+
     public bool qrRecog()
     //private void Update()
     {
@@ -57,12 +56,13 @@ public class QR : MonoBehaviour
         SYEUI.UM.panel.SetActive(false);
         //um.panel.SetActive(false);
 
-        if (!trackedManager.GetComponent<ARTrackedImageManager>().enabled)
+        if (trackedManager.GetComponent<ARTrackedImageManager>().enabled)
         {
             CH.gameObject.SetActive(true);
             //trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
             //trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<BoxCollider>().enabled = true;
             txt.text = "Find Image";
+            GetComponent<FindDestination>().storeObj.SetActive(false);
         }
 
         //if (trackedManager.GetComponent<ARTrackedImageManager>().enabled == true)
