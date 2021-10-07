@@ -8,6 +8,8 @@ public class Cjj_CloudSpawnManager : MonoBehaviour
     public GameObject spawnmanager;
     public int spawnnumber = 0;
 
+    public bool SPAWN = false;
+
     private void Awake()
     {
         instance = this;
@@ -15,13 +17,13 @@ public class Cjj_CloudSpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        SPAWN = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (spawnnumber <= 2)
+        if (spawnnumber <= 2 && SPAWN == false)
         {
             GameObject enemyspawn = Instantiate(spawnmanager);
             enemyspawn.transform.position = EnemyRandomPosition();

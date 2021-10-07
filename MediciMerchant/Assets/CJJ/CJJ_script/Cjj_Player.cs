@@ -35,17 +35,20 @@ public class Cjj_Player : MonoBehaviour
         //    }
         //}
 
-        Touch touch = Input.GetTouch(0);
-        if (touch.phase == TouchPhase.Began)
+        if (Input.touchCount != 0)
         {
-            Ray ray = Camera.main.ScreenPointToRay(touch.position);
-            int layer = 1 << LayerMask.NameToLayer("Enemy");
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, 10, layer))
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
             {
-                //print("아아아아아아");
-                hitInfo.transform.GetComponent<Cjj_Enemy>().DoDamage(1);
-                
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                int layer = 1 << LayerMask.NameToLayer("Enemy");
+                RaycastHit hitInfo;
+                if (Physics.Raycast(ray, out hitInfo, 10, layer))
+                {
+                    //print("아아아아아아");
+                    hitInfo.transform.GetComponent<Cjj_Enemy>().DoDamage(1);
+
+                }
             }
         }
 

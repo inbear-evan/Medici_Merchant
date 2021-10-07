@@ -59,11 +59,13 @@ public class FindPosition : MonoBehaviour
         {
             arrivedText.text = "µµÂø";
             storeObj.SetActive(true);
+            miniMap.SetActive(false);
             fd.D.SetActive(false);
             lr.enabled = false;
+            Cjj_CloudSpawnManager.instance.SPAWN = true;
         }
         else
-        {   
+        {
             GetComponent<NavManager>().DrawPathLine(player.position, destination, lr);
         }
 
@@ -77,8 +79,9 @@ public class FindPosition : MonoBehaviour
                     nada.SetActive(true);
                     nada.transform.position = markerImg.transform.position;
                     nada.transform.rotation = markerImg.transform.rotation;
-                    if (QR.QM.qrRecog()) 
+                    if (QR.QM.qrRecog())
                     {
+                        
                         miniMap.SetActive(true);
                         lr.gameObject.SetActive(true);
                         arrivedText.text = "¾È³» Áß";
@@ -93,10 +96,9 @@ public class FindPosition : MonoBehaviour
 
                         fd.D.SetActive(true);
                         fd.D.transform.position = destination.transform.position;
-
                         nada.SetActive(false);
                     }
-                    
+
                 }
             }
         }
