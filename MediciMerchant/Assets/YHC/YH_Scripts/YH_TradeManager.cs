@@ -31,7 +31,7 @@ public class YH_TradeManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+        //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
     }
     public void tradeStoreNBag()
     {
@@ -85,7 +85,7 @@ public class YH_TradeManager : MonoBehaviour
                 //gold.gameObject.transform.parent.parent.GetChild(3).GetChild(itemNum).GetChild(0).GetComponent<Text>().text = (int.Parse(gold.gameObject.transform.parent.parent.GetChild(3).GetChild(itemNum).GetChild(0).GetComponent<Text>().text) + 1).ToString();
 
                 YH_InvenManager.instance.gold -= (int)YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice;
-                //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+                YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
             }
         }
         else if (EventSystem.current.currentSelectedGameObject.CompareTag("BAGSLOT"))
@@ -114,10 +114,10 @@ public class YH_TradeManager : MonoBehaviour
 
             // 열린가게 체크
             int storeidx = transform.parent.GetComponent<YH_StoreInteraction>().storeIndex;
-            int itemIndex = -1;
             // 가게의 내용물 체크
             if (storeidx != -1)
             {
+                int itemIndex = -1;
                 for (int i = 0; i < 3; i++)
                 {
                     if (storeUI.transform.GetChild(storeidx).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
@@ -135,14 +135,13 @@ public class YH_TradeManager : MonoBehaviour
                         (int.Parse(bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text) - 1).ToString();
                     if (itemIndex != -1)
                     {
-                        //가방의 물건을 줄어듬
-                        YH_InvenManager.instance.gold += (int)YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice;
-                        //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+                        YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice / 2);
+                        YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
                     }
                     else
                     {
-                        YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice / 2);
-                        //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+                        YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice * 2);
+                        YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
                     }
                 }
 

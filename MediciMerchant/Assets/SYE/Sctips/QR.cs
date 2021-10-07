@@ -15,6 +15,8 @@ public class QR : MonoBehaviour
     //public GameObject nada;
     public Image CH;
     public GameObject trackedManager;
+    public GameObject itemBag;
+    public TMP_Dropdown tmpDp;
     GameObject cam;
     public TMP_Text txt;
     private void Start()
@@ -59,6 +61,9 @@ public class QR : MonoBehaviour
         if (trackedManager.GetComponent<ARTrackedImageManager>().enabled)
         {
             CH.gameObject.SetActive(true);
+            Cjj_CloudSpawnManager.instance.SPAWN = false;
+            itemBag.SetActive(false);
+            tmpDp.value = 0;
             //trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
             //trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<BoxCollider>().enabled = true;
             txt.text = "Find Image";
