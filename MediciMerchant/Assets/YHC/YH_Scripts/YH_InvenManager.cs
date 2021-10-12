@@ -23,11 +23,15 @@ public class YH_InvenManager : MonoBehaviour
     public Transform curParent;     // 아이템이 있던 슬롯 게임오브젝트
     public Transform parentOnDrag;
 
+    public GameObject QRIndicator;
     // 가방 활성화 
     public void OpenBag()
     {
-        goldAmount.text = gold.ToString();     // 갖고 있는 골드를 텍스트로 표현
-        bagFrame.SetActive(true);
+        if (!QRIndicator.activeSelf)
+        {
+            goldAmount.text = gold.ToString();     // 갖고 있는 골드를 텍스트로 표현
+            bagFrame.SetActive(true);
+        }
     }
 
     // 가방 비활성화

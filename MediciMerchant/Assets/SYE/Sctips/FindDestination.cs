@@ -19,6 +19,7 @@ public class FindDestination : MonoBehaviour
     public GameObject routeLine;
     public GameObject storeObj;
     public GameObject miniMap;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +74,7 @@ public class FindDestination : MonoBehaviour
         miniMap.SetActive(false);
         storeObj.SetActive(true);
         Cjj_CloudSpawnManager.instance.SPAWN = true;
+
     }
 
     public void naviDontGo()

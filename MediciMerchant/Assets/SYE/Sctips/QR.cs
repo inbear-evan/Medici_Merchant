@@ -16,17 +16,22 @@ public class QR : MonoBehaviour
     public Image CH;
     public GameObject trackedManager;
     public GameObject itemBag;
-    public TMP_Dropdown tmpDp;
+    public GameObject[] store;
+    public Slider statusSlider;
     GameObject cam;
     public TMP_Text txt;
+    //public GameObject dpBtnManager;
+
+
     private void Start()
     {
         //nada.GetComponent<MeshRenderer>().enabled = false;
         //trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<MeshRenderer>().enabled = false;
         CH.gameObject.SetActive(true);
+        statusSlider.gameObject.SetActive(false);
         trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
         cam = trackedManager.transform.GetChild(0).gameObject;
-        txt.text = "마커 검색";
+        //txt.text = "마커 검색";
     }
 
     public bool qrRecog()
@@ -36,16 +41,16 @@ public class QR : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hitInfo;
         int layer = 1 << LayerMask.NameToLayer("NADA");
-        if (Physics.Raycast(ray, out hitInfo, 10, layer))
+        if (Physics.Raycast(ray, out hitInfo, 2, layer))
         {
-
             //if (hitInfo.transform.CompareTag("NADA"))
             {
                 qrRecogChk = true;
                 CH.gameObject.SetActive(false);
+                statusSlider.gameObject.SetActive(true);
                 //trackedManager.GetComponent<ARTrackedImageManager>().enabled = false;
                 //trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<BoxCollider>().enabled = false;
-                txt.text = "Recog Image";
+                //txt.text = "현재 위치";
             }
         }
         //txt.text = "Recog ....";
@@ -63,26 +68,14 @@ public class QR : MonoBehaviour
             CH.gameObject.SetActive(true);
             Cjj_CloudSpawnManager.instance.SPAWN = false;
             itemBag.SetActive(false);
-            tmpDp.value = 0;
+            for(int i = 0; i < store.Length;i++)
+                store[i].SetActive(false);
             //trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
             //trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<BoxCollider>().enabled = true;
-            txt.text = "Find Image";
+            txt.text = "현재 위치";
             GetComponent<FindDestination>().storeObj.SetActive(false);
+            //dpBtnManager.GetComponent<DestinationBtn>().destinationIndex = -1;
         }
-
-        //if (trackedManager.GetComponent<ARTrackedImageManager>().enabled == true)
-        //{
-        //    CH.gameObject.SetActive(false);
-        //    trackedManager.GetComponent<ARTrackedImageManager>().enabled = false;
-        //    trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<BoxCollider>().enabled = false;
-        //}
-        //else
-        //{
-        //    CH.gameObject.SetActive(true);
-        //    trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
-        //    trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<BoxCollider>().enabled = true;
-        //    txt.text = "Find Image";
-        //}
     }
 
 }

@@ -12,13 +12,14 @@ public class SyncMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        worldCompass= Quaternion.Euler(0, 180, 0);
+        //worldCompass= Quaternion.Euler(0, 180, 0);
         //transform.rotation = worldCompass;
     }
 
     // Update is called once per frame
     void Update()
     {
+        worldCompass = Quaternion.Euler(0, 180, 0);
         transform.position = new Vector3(origin.transform.position.x, -1, origin.transform.position.z);
         //180 - a
         localCompass = (origin.transform.rotation);

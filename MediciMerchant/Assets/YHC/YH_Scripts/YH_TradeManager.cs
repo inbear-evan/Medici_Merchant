@@ -29,9 +29,9 @@ public class YH_TradeManager : MonoBehaviour
     int itemsIndex;
     int itemNum;
 
-    private void FixedUpdate()
+    private void Update()
     {
-        //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+        YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
     }
     public void tradeStoreNBag()
     {
@@ -85,7 +85,7 @@ public class YH_TradeManager : MonoBehaviour
                 //gold.gameObject.transform.parent.parent.GetChild(3).GetChild(itemNum).GetChild(0).GetComponent<Text>().text = (int.Parse(gold.gameObject.transform.parent.parent.GetChild(3).GetChild(itemNum).GetChild(0).GetComponent<Text>().text) + 1).ToString();
 
                 YH_InvenManager.instance.gold -= (int)YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice;
-                YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+                //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
             }
         }
         else if (EventSystem.current.currentSelectedGameObject.CompareTag("BAGSLOT"))
@@ -136,12 +136,12 @@ public class YH_TradeManager : MonoBehaviour
                     if (itemIndex != -1)
                     {
                         YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice / 2);
-                        YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+                        //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
                     }
                     else
                     {
                         YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice * 2);
-                        YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+                        //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
                     }
                 }
 
