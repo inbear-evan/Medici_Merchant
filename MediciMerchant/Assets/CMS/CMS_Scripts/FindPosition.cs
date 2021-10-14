@@ -19,19 +19,23 @@ public class FindPosition : MonoBehaviour
     public LineRenderer lr;
     public NavMeshSurface surface;
     public TMP_Text arrivedText;
-    public TMP_Dropdown dp;
+    //public TMP_Dropdown dp;
     public GameObject nada;
     public GameObject storeObj;
     public FindDestination fd;
+    public DestinationBtn dpBtn;
     public Slider sl;
     public int markerIndex = -1;
+
     private void Awake()
     {
         lr.enabled = false;
         mediciMap.SetActive(false);
         miniMap.SetActive(false);
         storeObj.SetActive(false);
+        sl.maxValue = 0;
         sl.gameObject.SetActive(false);
+        destination = null;
         arTim = GetComponent<ARTrackedImageManager>();
         arrivedText.text = "마커 검색";
     }
@@ -53,24 +57,21 @@ public class FindPosition : MonoBehaviour
         {
             arrivedText.text = "도착";
             storeObj.SetActive(true);
+            for(int i = 0; i < 5; i++)
+            {
+                storeObj.transform.GetChild(i).gameObject.SetActive(dpBtn.destinationIndex == i);
+            }
             miniMap.SetActive(false);
             fd.D.SetActive(false);
             lr.enabled = false;
+            sl.maxValue = 0;
             sl.gameObject.SetActive(false);
+            nada.SetActive(false);
             Cjj_CloudSpawnManager.instance.SPAWN = true;
         }
         else
         {
             GetComponent<NavManager>().DrawPathLine(player.position, destination, lr);
-            if (!sl.gameObject.activeSelf)
-            {
-                sl.gameObject.SetActive(true);
-                sl.maxValue = Vector3.Distance(player.position, destination.position);
-            }
-            else
-            {
-                sl.value = Vector3.Distance(player.position, destination.position);
-            }
         }
 
         for (int i = 0; i < obj.updated.Count; i++)
@@ -83,17 +84,18 @@ public class FindPosition : MonoBehaviour
                     nada.SetActive(true);
                     nada.transform.position = markerImg.transform.position;
                     nada.transform.rotation = markerImg.transform.rotation;
-                    markerIndex = 3;
+                    //markerIndex = 3;
                     if (QR.QM.qrRecog())
                     {
                         miniMap.SetActive(true);
                         lr.gameObject.SetActive(true);
-                        arrivedText.text = "안내 중";
+                        arrivedText.text = "나폴리";
                         mediciMap.SetActive(true);
-
+                        sl.gameObject.SetActive(true);
                         //mediciMap.transform.rotation = Quaternion.Euler(0, 180, 0);
                         //mediciMap.transform.position = new Vector3(1*(marker1.position.z), -1, -1 * marker1.position.x);
                         //mediciMap.transform.position = new Vector3(marker1.position.x, -1, marker1.position.z);
+
                         lr.enabled = true;
                         surface.RemoveData();
                         surface.BuildNavMesh();

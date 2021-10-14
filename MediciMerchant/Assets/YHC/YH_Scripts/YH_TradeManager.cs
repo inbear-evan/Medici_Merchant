@@ -56,22 +56,22 @@ public class YH_TradeManager : MonoBehaviour
         {
             switch (YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].icon.name)
             {
-                case "flatDark35":
+                case "Fish":
                     itemNum = 0;
                     break;
-                case "flatDark36":
+                case "Cloth":
                     itemNum = 1;
                     break;
-                case "flatDark37":
+                case "Fruit":
                     itemNum = 2;
                     break;
-                case "flatDark38":
+                case "Sword":
                     itemNum = 3;
                     break;
-                case "flatDark39":
+                case "Sheild":
                     itemNum = 4;
                     break;
-                case "flatDark40":
+                case "Rice":
                     itemNum = 5;
                     break;
             }
@@ -92,22 +92,22 @@ public class YH_TradeManager : MonoBehaviour
         {
             switch (EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
             {
-                case "flatDark35":
+                case "Fish":
                     itemNum = 0;
                     break;
-                case "flatDark36":
+                case "Cloth":
                     itemNum = 1;
                     break;
-                case "flatDark37":
+                case "Fruit":
                     itemNum = 2;
                     break;
-                case "flatDark38":
+                case "Sword":
                     itemNum = 3;
                     break;
-                case "flatDark39":
+                case "Sheild":
                     itemNum = 4;
                     break;
-                case "flatDark40":
+                case "Rice":
                     itemNum = 5;
                     break;
             }
@@ -120,7 +120,7 @@ public class YH_TradeManager : MonoBehaviour
                 int itemIndex = -1;
                 for (int i = 0; i < 3; i++)
                 {
-                    if (storeUI.transform.GetChild(storeidx).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
+                    if (storeUI.transform.GetChild(storeidx).GetChild(1).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
                     {
                         itemIndex = i;
                         break;

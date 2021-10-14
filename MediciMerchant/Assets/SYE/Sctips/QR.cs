@@ -29,6 +29,7 @@ public class QR : MonoBehaviour
         //trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<MeshRenderer>().enabled = false;
         CH.gameObject.SetActive(true);
         statusSlider.gameObject.SetActive(false);
+        GetComponent<FindDestination>().storeObj.SetActive(false);
         trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
         cam = trackedManager.transform.GetChild(0).gameObject;
         //txt.text = "마커 검색";

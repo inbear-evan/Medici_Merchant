@@ -7,19 +7,23 @@ using TMPro;
 public class StoreSync : MonoBehaviour
 {
     public GameObject mainMap;
-    public TMP_Dropdown dp;
-
+    public GameObject destBtnManager;
     private void Update()
     {
-        transform.position = mainMap.transform.position;
-        transform.rotation = mainMap.transform.rotation;
-        transform.localScale = mainMap.transform.localScale;
-        destinaionStoreShow();
+        if (gameObject.activeSelf)
+        {
+            transform.position = mainMap.transform.position;
+            transform.rotation = mainMap.transform.rotation;
+            transform.localScale = mainMap.transform.localScale;
+            destinaionStoreShow();
+        }
     }
 
     void destinaionStoreShow()
     {
-        for(int i = 0; i < transform.childCount;i++)
-            transform.GetChild(i).gameObject.SetActive(i == (dp.value - 1));
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(destBtnManager.GetComponent<DestinationBtn>().destinationIndex == i);
+        }
     }
 }
