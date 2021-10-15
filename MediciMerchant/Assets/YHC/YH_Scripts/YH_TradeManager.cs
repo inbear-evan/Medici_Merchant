@@ -29,7 +29,7 @@ public class YH_TradeManager : MonoBehaviour
     int itemsIndex;
     int itemNum;
 
-    private void FixedUpdate()
+    private void Update()
     {
         YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
     }
@@ -56,22 +56,22 @@ public class YH_TradeManager : MonoBehaviour
         {
             switch (YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].icon.name)
             {
-                case "flatDark35":
+                case "Fish":
                     itemNum = 0;
                     break;
-                case "flatDark36":
+                case "Cloth":
                     itemNum = 1;
                     break;
-                case "flatDark37":
+                case "Fruit":
                     itemNum = 2;
                     break;
-                case "flatDark38":
+                case "Sword":
                     itemNum = 3;
                     break;
-                case "flatDark39":
+                case "Sheild":
                     itemNum = 4;
                     break;
-                case "flatDark40":
+                case "Rice":
                     itemNum = 5;
                     break;
             }
@@ -92,35 +92,35 @@ public class YH_TradeManager : MonoBehaviour
         {
             switch (EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
             {
-                case "flatDark35":
+                case "Fish":
                     itemNum = 0;
                     break;
-                case "flatDark36":
+                case "Cloth":
                     itemNum = 1;
                     break;
-                case "flatDark37":
+                case "Fruit":
                     itemNum = 2;
                     break;
-                case "flatDark38":
+                case "Sword":
                     itemNum = 3;
                     break;
-                case "flatDark39":
+                case "Sheild":
                     itemNum = 4;
                     break;
-                case "flatDark40":
+                case "Rice":
                     itemNum = 5;
                     break;
             }
 
             // 열린가게 체크
             int storeidx = transform.parent.GetComponent<YH_StoreInteraction>().storeIndex;
-            int itemIndex = -1;
             // 가게의 내용물 체크
             if (storeidx != -1)
             {
+                int itemIndex = -1;
                 for (int i = 0; i < 3; i++)
                 {
-                    if (storeUI.transform.GetChild(storeidx).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
+                    if (storeUI.transform.GetChild(storeidx).GetChild(1).GetChild(i).GetChild(0).GetComponent<Image>().sprite.name == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
                     {
                         itemIndex = i;
                         break;
@@ -135,13 +135,12 @@ public class YH_TradeManager : MonoBehaviour
                         (int.Parse(bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text) - 1).ToString();
                     if (itemIndex != -1)
                     {
-                        //가방의 물건을 줄어듬
-                        YH_InvenManager.instance.gold += (int)YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice;
+                        YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice / 2);
                         //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
                     }
                     else
                     {
-                        YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice / 2);
+                        YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice * 2);
                         //YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
                     }
                 }

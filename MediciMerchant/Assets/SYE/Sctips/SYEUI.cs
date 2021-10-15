@@ -11,6 +11,7 @@ public class SYEUI : MonoBehaviour
     public GameObject panel;
     public GameObject minimap;
     public GameObject itemWindow;
+
     private void Awake()
     {
         UM= this;
@@ -42,8 +43,8 @@ public class SYEUI : MonoBehaviour
         minimap.SetActive(status);
         //minimap.SetActive(minimapStatus.isOn);
 
-        if (status) Debug.Log("Mnmap On");
-        else Debug.Log("Mnmap Off");
+        //if (status) Debug.Log("Mnmap On");
+        //else Debug.Log("Mnmap Off");
     }
 
     public void MenuOpen()

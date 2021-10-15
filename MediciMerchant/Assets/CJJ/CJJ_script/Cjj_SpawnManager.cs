@@ -39,7 +39,21 @@ public class Cjj_SpawnManager : MonoBehaviour
             Cjj_Player.instance.EnemyEvent();
         }
     }
-    
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.CompareTag("Room"))
+    //    {
+    //        Cjj_CloudSpawnManager.instance.SPAWN = true;
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Room"))
+    //    {
+    //        Cjj_CloudSpawnManager.instance.SPAWN = false;
+    //    }
+    //}
+
     private void OnDestroy()
     {
         Cjj_CloudSpawnManager.instance.spawnnumber--;

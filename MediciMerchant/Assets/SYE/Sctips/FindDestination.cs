@@ -15,9 +15,12 @@ public class FindDestination : MonoBehaviour
     GameObject CurrentTouch;
     Touch touch;
     public Button QRbtn;
-    public TMP_Text text;
+    //public TMP_Text text;
     public GameObject routeLine;
     public GameObject storeObj;
+    public GameObject miniMap;
+    public DestinationBtn dpBtn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,18 +46,21 @@ public class FindDestination : MonoBehaviour
         //        // EventActivate();
         //    }
         //}
-        Touch touch = Input.GetTouch(0);
-        if (touch.phase == TouchPhase.Began)
+        if (Input.touchCount != 0)
         {
-            Ray ray = Camera.main.ScreenPointToRay(touch.position);
-            int layer = 1 << LayerMask.NameToLayer("DESTINATION");
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, 10, layer))
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
             {
-                // QR.QM.trackedManager.SetActive(false);
-                //QR.QM.CH.enabled = false;
-                //QRbtn.gameObject.SetActive(false);
-                naviYON.SetActive(true);
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                int layer = 1 << LayerMask.NameToLayer("DESTINATION");
+                RaycastHit hitInfo;
+                if (Physics.Raycast(ray, out hitInfo, 10, layer))
+                {
+                    // QR.QM.trackedManager.SetActive(false);
+                    //QR.QM.CH.enabled = false;
+                    //QRbtn.gameObject.SetActive(false);
+                    naviYON.SetActive(true);
+                }
             }
         }
     }
@@ -62,11 +68,17 @@ public class FindDestination : MonoBehaviour
     public void naviOut()
     {
         //D.GetComponent<MeshRenderer>().enabled = false;
-        text.text = "µµÂø";
+        //text.text = "µµÂø";
         D.SetActive(false);
         naviYON.SetActive(false);
         routeLine.SetActive(false);
+        miniMap.SetActive(false);
         storeObj.SetActive(true);
+        for (int i = 0; i < 5; i++)
+        {
+            storeObj.transform.GetChild(i).gameObject.SetActive(dpBtn.destinationIndex == i);
+        }
+        Cjj_CloudSpawnManager.instance.SPAWN = true;
     }
 
     public void naviDontGo()
