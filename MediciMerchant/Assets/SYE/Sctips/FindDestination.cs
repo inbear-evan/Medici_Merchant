@@ -15,7 +15,7 @@ public class FindDestination : MonoBehaviour
     GameObject CurrentTouch;
     Touch touch;
     public Button QRbtn;
-    public TMP_Text text;
+    //public TMP_Text text;
     public GameObject routeLine;
     public GameObject storeObj;
     public GameObject miniMap;
@@ -68,7 +68,7 @@ public class FindDestination : MonoBehaviour
     public void naviOut()
     {
         //D.GetComponent<MeshRenderer>().enabled = false;
-        text.text = "µµÂø";
+        //text.text = "µµÂø";
         D.SetActive(false);
         naviYON.SetActive(false);
         routeLine.SetActive(false);
@@ -79,7 +79,6 @@ public class FindDestination : MonoBehaviour
             storeObj.transform.GetChild(i).gameObject.SetActive(dpBtn.destinationIndex == i);
         }
         Cjj_CloudSpawnManager.instance.SPAWN = true;
-
     }
 
     public void naviDontGo()

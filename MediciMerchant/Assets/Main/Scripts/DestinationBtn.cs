@@ -123,7 +123,7 @@ public class DestinationBtn : MonoBehaviour
                         break;
 
                 }
-                destText.text = markers[i].name;
+                destText.text = countryName[i];
                 destinationIndex = i;
                 destCheckPinImg.gameObject.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
                 StopCoroutine(checkMarkerDraw());

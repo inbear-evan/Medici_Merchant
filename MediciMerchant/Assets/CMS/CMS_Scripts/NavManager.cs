@@ -6,32 +6,34 @@ using UnityEngine.AI;
 
 public class NavManager : MonoBehaviour
 {
-    public void DrawPathLine(Vector3 startingPoint, Transform endPoint, LineRenderer lr)
+
+    public void DrawPathLine(Vector3 startingPoint, Transform endPoint, Transform orgin, LineRenderer lr)
     {
         float totalDistance = 0;
         NavMeshPath path = new NavMeshPath();
         NavMesh.CalculatePath(startingPoint, endPoint.position, NavMesh.AllAreas, path);
         lr.positionCount = path.corners.Length;
         lr.SetPositions(path.corners);
-        for (int i = 0; i < path.corners.Length - 1; i++)
-        {
-            totalDistance += Vector3.Distance(path.corners[i], path.corners[i + 1]);
-        }
-        if (transform.GetComponent<FindPosition>().sl.maxValue <= 0)
-            transform.GetComponent<FindPosition>().sl.maxValue = totalDistance;
-        else transform.GetComponent<FindPosition>().sl.value = totalDistance;
+        //for (int i = 0; i < path.corners.Length - 1; i++)
+        //{
+        //    totalDistance += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+        //}
+        totalDistance = Vector3.Distance(orgin.position, endPoint.position);
+        transform.GetComponent<FindPosition>().sl.maxValue = totalDistance;
 
+        totalDistance = Vector3.Distance(startingPoint, endPoint.position);
+        transform.GetComponent<FindPosition>().sl.value = totalDistance;
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
-   
+
     // Update is called once per frame
     void Update()
     {
 
-       
+
     }
 }

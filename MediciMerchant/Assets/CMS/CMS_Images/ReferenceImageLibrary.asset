@@ -16,12 +16,22 @@ MonoBehaviour:
   m_GuidHigh: 11610884537878683791
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5252809534852248273
-      m_GuidHigh: 6214077380835038907
+      m_GuidLow: 5484630717200865300
+      m_GuidHigh: 15471680332249439404
     m_SerializedTextureGuid:
       m_GuidLow: 10598100397740094152
       m_GuidHigh: 17279091733250013051
     m_Size: {x: 0.18, y: 0.18}
     m_SpecifySize: 1
     m_Name: 1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4747185123645875819
+      m_GuidHigh: 18195503845035603382
+    m_SerializedTextureGuid:
+      m_GuidLow: 6675664382405705357
+      m_GuidHigh: 15817911326588974330
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Venice
     m_Texture: {fileID: 0}

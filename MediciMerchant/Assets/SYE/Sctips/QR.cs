@@ -18,8 +18,10 @@ public class QR : MonoBehaviour
     public GameObject itemBag;
     public GameObject[] store;
     public Slider statusSlider;
+
     GameObject cam;
     public TMP_Text txt;
+
     //public GameObject dpBtnManager;
 
 
@@ -73,7 +75,8 @@ public class QR : MonoBehaviour
                 store[i].SetActive(false);
             //trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
             //trackedManager.GetComponent<ARTrackedImageManager>().trackedImagePrefab.GetComponent<BoxCollider>().enabled = true;
-            txt.text = "현재 위치";
+            //txt.text = "현재 위치";
+            
             GetComponent<FindDestination>().storeObj.SetActive(false);
             //dpBtnManager.GetComponent<DestinationBtn>().destinationIndex = -1;
         }

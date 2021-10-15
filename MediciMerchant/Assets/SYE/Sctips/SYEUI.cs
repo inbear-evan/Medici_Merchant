@@ -11,6 +11,7 @@ public class SYEUI : MonoBehaviour
     public GameObject panel;
     public GameObject minimap;
     public GameObject itemWindow;
+
     private void Awake()
     {
         UM= this;
