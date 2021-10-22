@@ -5,7 +5,7 @@ using UnityEngine;
 public class YH_StoreInteraction : MonoBehaviour
 {
     public List<GameObject> StoreUI = new List<GameObject>();
-
+    public GameObject itemUI;
 
     /// <summary> 
     /// None     -1
@@ -16,7 +16,7 @@ public class YH_StoreInteraction : MonoBehaviour
     /// Florence  4
     /// </summary>
     public int storeIndex = -1;
-    void FixedUpdate()
+    void Update()
     {
         bool storeOpen = false;
         for (int i = 0; i < 5; i++)
@@ -46,6 +46,7 @@ public class YH_StoreInteraction : MonoBehaviour
                     {
                         if (hitInfo.collider.gameObject.name == "Store_Naples")
                         {
+                            itemUI.gameObject.SetActive(true);
                             StoreUI[0].gameObject.SetActive(true);
                             StoreUI[1].gameObject.SetActive(false);
                             StoreUI[2].gameObject.SetActive(false);
@@ -61,6 +62,7 @@ public class YH_StoreInteraction : MonoBehaviour
                         }
                         else if (hitInfo.collider.gameObject.name == "Store_Rome")
                         {
+                            itemUI.gameObject.SetActive(true);
                             StoreUI[0].gameObject.SetActive(false);
                             StoreUI[1].gameObject.SetActive(true);
                             StoreUI[2].gameObject.SetActive(false);
@@ -76,6 +78,7 @@ public class YH_StoreInteraction : MonoBehaviour
                         }
                         else if (hitInfo.collider.gameObject.name == "Store_Venice")
                         {
+                            itemUI.gameObject.SetActive(true);
                             StoreUI[0].gameObject.SetActive(false);
                             StoreUI[1].gameObject.SetActive(false);
                             StoreUI[2].gameObject.SetActive(true);
@@ -91,6 +94,7 @@ public class YH_StoreInteraction : MonoBehaviour
                         }
                         else if (hitInfo.collider.gameObject.name == "Store_Milan")
                         {
+                            itemUI.gameObject.SetActive(true);
                             StoreUI[0].gameObject.SetActive(false);
                             StoreUI[1].gameObject.SetActive(false);
                             StoreUI[2].gameObject.SetActive(false);
@@ -106,6 +110,7 @@ public class YH_StoreInteraction : MonoBehaviour
                         }
                         else if (hitInfo.collider.gameObject.name == "Store_Florence")
                         {
+                            itemUI.gameObject.SetActive(true);
                             StoreUI[0].gameObject.SetActive(false);
                             StoreUI[1].gameObject.SetActive(false);
                             StoreUI[2].gameObject.SetActive(false);

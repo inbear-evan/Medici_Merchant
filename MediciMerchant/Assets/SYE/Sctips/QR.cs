@@ -68,6 +68,7 @@ public class QR : MonoBehaviour
 
         if (trackedManager.GetComponent<ARTrackedImageManager>().enabled)
         {
+            trackedManager.GetComponent<FindPosition>().markerIndex = -1;
             CH.gameObject.SetActive(true);
             Cjj_CloudSpawnManager.instance.SPAWN = false;
             itemBag.SetActive(false);
@@ -79,6 +80,17 @@ public class QR : MonoBehaviour
             
             GetComponent<FindDestination>().storeObj.SetActive(false);
             //dpBtnManager.GetComponent<DestinationBtn>().destinationIndex = -1;
+            int num = GetComponent<FindDestination>().storeObj.transform.childCount;
+            for(int i = 0; i < num; i++)
+            {
+                GetComponent<FindDestination>().storeObj.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            GetComponent<FindDestination>().storeObj.transform.parent.GetChild(0).gameObject.SetActive(true);
+            GetComponent<FindDestination>().storeObj.transform.parent.GetChild(1).gameObject.SetActive(true);
+            GetComponent<FindDestination>().storeObj.transform.parent.GetChild(2).gameObject.SetActive(true);
+            GetComponent<FindDestination>().storeObj.transform.parent.GetChild(3).gameObject.SetActive(true);
+            GetComponent<FindDestination>().storeObj.transform.parent.GetChild(4).gameObject.SetActive(true);
         }
     }
 

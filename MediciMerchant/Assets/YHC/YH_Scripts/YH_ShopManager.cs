@@ -41,16 +41,6 @@ public class YH_ShopManager : MonoBehaviour
     {
         instance = this;
     }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
-    
     public void shopClose()
     {
         UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);

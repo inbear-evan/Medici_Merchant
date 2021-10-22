@@ -25,6 +25,11 @@ public class YH_InvenManager : MonoBehaviour
 
     public GameObject QRIndicator;
     // 가방 활성화 
+
+    private void Start()
+    {
+        goldAmount.text = gold.ToString();
+    }
     public void OpenBag()
     {
         if (!QRIndicator.activeSelf)

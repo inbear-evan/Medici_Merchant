@@ -9,12 +9,12 @@ public class TestLineAnimation : MonoBehaviour
     LineRenderer lr;
 
     //Vector3[] pt = new Vector3[3];
-    private void Start()
-    {
+    //private void Start()
+    //{
         //lr = GetComponent<LineRenderer>();
         //material.mainTextureOffset = new Vector2(0, 0);
         //material.mainTextureScale *= 2f;
-    }
+    //}
     void Update()
     {
 

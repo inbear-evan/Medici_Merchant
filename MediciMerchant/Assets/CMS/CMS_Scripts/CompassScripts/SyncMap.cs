@@ -7,7 +7,7 @@ public class SyncMap : MonoBehaviour
     Quaternion worldCompass;
     public Quaternion localCompass;
     public GameObject Player;
-    public GameObject origin;
+    public GameObject[] origin;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +19,14 @@ public class SyncMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        worldCompass = Quaternion.Euler(0, 180, 0);
-        transform.position = new Vector3(origin.transform.position.x, -1, origin.transform.position.z);
-        //180 - a
-        localCompass = (origin.transform.rotation);
-        transform.rotation = Quaternion.Euler(0, worldCompass.eulerAngles.y - localCompass.eulerAngles.y, 0);
+        int currentNum = Camera.main.transform.parent.GetComponent<FindPosition>().markerIndex;
+        if (currentNum != -1)
+        {
+            worldCompass = Quaternion.Euler(0, 180, 0);
+            transform.position = new Vector3(origin[currentNum].transform.position.x, -1, origin[currentNum].transform.position.z);
+            //180 - a
+            localCompass = (origin[currentNum].transform.rotation);
+            transform.rotation = Quaternion.Euler(0, worldCompass.eulerAngles.y - localCompass.eulerAngles.y, 0);
+        }
     }
 }

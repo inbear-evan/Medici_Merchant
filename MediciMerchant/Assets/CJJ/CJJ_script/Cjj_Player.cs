@@ -14,11 +14,6 @@ public class Cjj_Player : MonoBehaviour
     {
         instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
 
     // Update is called once per frame
     void Update()
@@ -46,7 +41,14 @@ public class Cjj_Player : MonoBehaviour
                 if (Physics.Raycast(ray, out hitInfo, 10, layer))
                 {
                     //print("아아아아아아");
-                    hitInfo.transform.GetComponent<Cjj_Enemy>().DoDamage(1);
+                    //hitInfo.transform.GetComponent<Cjj_Enemy>().DoDamage(1);
+                    Cjj_Enemy enemy = hitInfo.transform.GetComponent<Cjj_Enemy>();
+                    // 맞는 애니매이션
+                    if (hitInfo.collider.GetComponent<Cjj_Enemy>().nohit == false)
+                    {
+                        enemy.EnemyHit();
+                        enemy.DoDamage(1);
+                    }
 
                 }
             }

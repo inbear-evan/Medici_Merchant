@@ -7,12 +7,6 @@ public class WheelRotation : MonoBehaviour
 {
     public Image wheel1;
     public Image wheel2;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     int dir;
 
     float prevSliderValue = 0;
@@ -24,11 +18,11 @@ public class WheelRotation : MonoBehaviour
         sliderValue = transform.GetComponent<Slider>().value;
         if (sliderValue < prevSliderValue)
         {
-            dir = -1;
+            dir = 1;
         }
         else if (sliderValue > prevSliderValue)
         {
-            dir = 1;
+            dir = -1;
         }
         else if(sliderValue == prevSliderValue)
         {

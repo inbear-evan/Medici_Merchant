@@ -22,18 +22,6 @@ public class NavManager : MonoBehaviour
         transform.GetComponent<FindPosition>().sl.maxValue = totalDistance;
 
         totalDistance = Vector3.Distance(startingPoint, endPoint.position);
-        transform.GetComponent<FindPosition>().sl.value = totalDistance;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
+        transform.GetComponent<FindPosition>().sl.value = transform.GetComponent<FindPosition>().sl.maxValue - totalDistance;
     }
 }

@@ -11,16 +11,16 @@ public class Cjj_SpawnManager : MonoBehaviour
     //TMP_Text ttt;//test
 
     // Start is called before the first frame update
-    void Start()
-    {
+    //void Start()
+    //{
         //ttt = GameObject.Find("CHECK").GetComponent<TMP_Text>(); //test
-    }
+    //}
 
     // Update is called once per frame
     void Update()
     {
         currenttime = currenttime + Time.deltaTime;
-        if (currenttime >= 5)
+        if (currenttime >= 10 )
         {
             Destroy(gameObject);
         }

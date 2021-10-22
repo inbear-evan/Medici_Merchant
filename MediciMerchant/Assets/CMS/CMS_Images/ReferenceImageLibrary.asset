@@ -26,12 +26,52 @@ MonoBehaviour:
     m_Name: 1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 4747185123645875819
-      m_GuidHigh: 18195503845035603382
+      m_GuidLow: 5210062212224968398
+      m_GuidHigh: 17289061861998961050
     m_SerializedTextureGuid:
-      m_GuidLow: 6675664382405705357
-      m_GuidHigh: 15817911326588974330
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+      m_GuidLow: 13453575036001973628
+      m_GuidHigh: 13668009952161467275
+    m_Size: {x: 1, y: 0.75}
+    m_SpecifySize: 1
+    m_Name: Florence
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5455494828783521563
+      m_GuidHigh: 12267750982084878485
+    m_SerializedTextureGuid:
+      m_GuidLow: 15547633161681865507
+      m_GuidHigh: 3072407357364620264
+    m_Size: {x: 1, y: 0.75}
+    m_SpecifySize: 1
+    m_Name: Milan
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5165301928248402649
+      m_GuidHigh: 1417004294023395731
+    m_SerializedTextureGuid:
+      m_GuidLow: 16790788718974351355
+      m_GuidHigh: 11141671295420388873
+    m_Size: {x: 1, y: 0.75}
+    m_SpecifySize: 1
+    m_Name: Naples
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5115326000626385249
+      m_GuidHigh: 17179448333018232456
+    m_SerializedTextureGuid:
+      m_GuidLow: 7684271903052099055
+      m_GuidHigh: 9263298653939216795
+    m_Size: {x: 1, y: 0.75}
+    m_SpecifySize: 1
+    m_Name: Rome
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4991223514086361180
+      m_GuidHigh: 16370074568308944017
+    m_SerializedTextureGuid:
+      m_GuidLow: 4059053897191185311
+      m_GuidHigh: 4013323938434261288
+    m_Size: {x: 1, y: 0.75}
+    m_SpecifySize: 1
     m_Name: Venice
     m_Texture: {fileID: 0}

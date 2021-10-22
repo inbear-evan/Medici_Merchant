@@ -12,7 +12,7 @@ public class FindPosition : MonoBehaviour
 {
     public GameObject mediciMap;
     public GameObject miniMap;
-    public Transform originPt;
+    public Transform[] originPt;
     public Transform destination;
     public Transform player;
     ARTrackedImageManager arTim;
@@ -27,10 +27,12 @@ public class FindPosition : MonoBehaviour
     public Slider sl;
     public bool slCheck = false;
     public int markerIndex = -1;
+    //public Transform panelDestination;
+    //public Transform currentPt;
 
     private void Awake()
     {
-
+        //currentPt.gameObject.SetActive(false);
         lr.enabled = false;
         mediciMap.SetActive(false);
         miniMap.SetActive(false);
@@ -40,6 +42,11 @@ public class FindPosition : MonoBehaviour
         destination = null;
         slCheck = false;
         arTim = GetComponent<ARTrackedImageManager>();
+        int num = storeObj.transform.childCount;
+        for (int i = 0; i < num; i++)
+        {
+            storeObj.transform.GetChild(i).gameObject.SetActive(false);
+        }
         //arrivedText.text = "마커 검색";
     }
 
@@ -74,19 +81,28 @@ public class FindPosition : MonoBehaviour
         }
         else
         {
-            GetComponent<NavManager>().DrawPathLine(player.position, destination, originPt, lr);
+            if(markerIndex != -1)
+                GetComponent<NavManager>().DrawPathLine(player.position, destination, originPt[markerIndex], lr);
         }
 
+        // 0 naples
+        // 1 rome
+        // 2 Veneci
+        // 3 milan
+        // 4 florence
         for (int i = 0; i < obj.updated.Count; i++)
         {
             ARTrackedImage markerImg = obj.updated[i];
             if (markerImg.trackingState == TrackingState.Tracking)
             {
-                if (markerImg.referenceImage.name == "1")
+                if (markerImg.referenceImage.name == "Naples")
                 {
                     nada.SetActive(true);
                     nada.transform.position = markerImg.transform.position;
                     nada.transform.rotation = markerImg.transform.rotation;
+                    //currentPt.position = panelDestination.GetChild(1).position;
+                    //currentPt.gameObject.SetActive(true);
+                    markerIndex = 0;
                     //markerIndex = 3;
                     if (QR.QM.qrRecog())
                     {
@@ -104,13 +120,97 @@ public class FindPosition : MonoBehaviour
                         surface.BuildNavMesh();
 
                         fd.D.SetActive(true);
-                        fd.D.transform.position = destination.transform.position;
                         nada.SetActive(false);
                     }
+                }
+                else if (markerImg.referenceImage.name == "Rome")
+                {
+                    nada.SetActive(true);
+                    nada.transform.position = markerImg.transform.position;
+                    nada.transform.rotation = markerImg.transform.rotation;
+                    markerIndex = 1;
+                    if (QR.QM.qrRecog())
+                    {
+                        miniMap.SetActive(true);
+                        lr.gameObject.SetActive(true);
+                        mediciMap.SetActive(true);
+                        sl.gameObject.SetActive(true);
 
+                        lr.enabled = true;
+                        surface.RemoveData();
+                        surface.BuildNavMesh();
+
+                        fd.D.SetActive(true);
+                        nada.SetActive(false);
+                    }
+                }
+                else if (markerImg.referenceImage.name == "Venice")
+                {
+                    nada.SetActive(true);
+                    nada.transform.position = markerImg.transform.position;
+                    nada.transform.rotation = markerImg.transform.rotation;
+                    markerIndex = 2;
+                    if (QR.QM.qrRecog())
+                    {
+                        miniMap.SetActive(true);
+                        lr.gameObject.SetActive(true);
+                        mediciMap.SetActive(true);
+                        sl.gameObject.SetActive(true);
+
+                        lr.enabled = true;
+                        surface.RemoveData();
+                        surface.BuildNavMesh();
+
+                        fd.D.SetActive(true);
+                        nada.SetActive(false);
+                    }
+                }
+                else if (markerImg.referenceImage.name == "Milan")
+                {
+                    nada.SetActive(true);
+                    nada.transform.position = markerImg.transform.position;
+                    nada.transform.rotation = markerImg.transform.rotation;
+                    markerIndex = 3;
+                    if (QR.QM.qrRecog())
+                    {
+                        miniMap.SetActive(true);
+                        lr.gameObject.SetActive(true);
+                        //arrivedText.text = "나폴리";
+                        mediciMap.SetActive(true);
+                        sl.gameObject.SetActive(true);
+
+                        lr.enabled = true;
+                        surface.RemoveData();
+                        surface.BuildNavMesh();
+
+                        fd.D.SetActive(true);
+                        nada.SetActive(false);
+                    }
+                }
+                else if (markerImg.referenceImage.name == "Florence")
+                {
+                    nada.SetActive(true);
+                    nada.transform.position = markerImg.transform.position;
+                    nada.transform.rotation = markerImg.transform.rotation;
+                    markerIndex = 4;
+                    if (QR.QM.qrRecog())
+                    {
+                        miniMap.SetActive(true);
+                        lr.gameObject.SetActive(true);
+                        mediciMap.SetActive(true);
+                        sl.gameObject.SetActive(true);
+
+                        lr.enabled = true;
+                        surface.RemoveData();
+                        surface.BuildNavMesh();
+
+                        fd.D.SetActive(true);
+                        nada.SetActive(false);
+                    }
                 }
             }
         }
+        fd.D.transform.position = destination.transform.position;
     }
 
     //public void Destination()

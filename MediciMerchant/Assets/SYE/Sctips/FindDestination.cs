@@ -9,11 +9,11 @@ using TMPro;
 public class FindDestination : MonoBehaviour
 {
     public GameObject D;
-    ARRaycastManager arManager;
+    //ARRaycastManager arManager;
     public GameObject naviYON;
     //   public GameObject m;
-    GameObject CurrentTouch;
-    Touch touch;
+    //GameObject CurrentTouch;
+    //Touch touch;
     public Button QRbtn;
     //public TMP_Text text;
     public GameObject routeLine;
@@ -54,7 +54,7 @@ public class FindDestination : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 int layer = 1 << LayerMask.NameToLayer("DESTINATION");
                 RaycastHit hitInfo;
-                if (Physics.Raycast(ray, out hitInfo, 10, layer))
+                if (Physics.Raycast(ray, out hitInfo, 30, layer))
                 {
                     // QR.QM.trackedManager.SetActive(false);
                     //QR.QM.CH.enabled = false;
@@ -78,6 +78,13 @@ public class FindDestination : MonoBehaviour
         {
             storeObj.transform.GetChild(i).gameObject.SetActive(dpBtn.destinationIndex == i);
         }
+
+        storeObj.transform.parent.GetChild(0).gameObject.SetActive(false);
+        storeObj.transform.parent.GetChild(1).gameObject.SetActive(false);
+        storeObj.transform.parent.GetChild(2).gameObject.SetActive(false);
+        storeObj.transform.parent.GetChild(3).gameObject.SetActive(false);
+        storeObj.transform.parent.GetChild(4).gameObject.SetActive(false);
+
         Cjj_CloudSpawnManager.instance.SPAWN = true;
     }
 

@@ -22,12 +22,6 @@ public class SYEUI : MonoBehaviour
         panel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void GameExit()
     {
         Application.Quit();
@@ -59,10 +53,7 @@ public class SYEUI : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void ReStart()
-    {
-        
-    }
+  
     public void ItemOpen()
     {
         itemWindow.SetActive(itemWindow.activeSelf != true);
