@@ -29,7 +29,7 @@ public class FindPosition : MonoBehaviour
     public int markerIndex = -1;
     //public Transform panelDestination;
     //public Transform currentPt;
-
+    
     private void Awake()
     {
         //currentPt.gameObject.SetActive(false);
@@ -84,7 +84,6 @@ public class FindPosition : MonoBehaviour
             if(markerIndex != -1)
                 GetComponent<NavManager>().DrawPathLine(player.position, destination, originPt[markerIndex], lr);
         }
-
         // 0 naples
         // 1 rome
         // 2 Veneci
@@ -92,6 +91,7 @@ public class FindPosition : MonoBehaviour
         // 4 florence
         for (int i = 0; i < obj.updated.Count; i++)
         {
+
             ARTrackedImage markerImg = obj.updated[i];
             if (markerImg.trackingState == TrackingState.Tracking)
             {
@@ -175,7 +175,7 @@ public class FindPosition : MonoBehaviour
                     {
                         miniMap.SetActive(true);
                         lr.gameObject.SetActive(true);
-                        //arrivedText.text = "나폴리";
+                        //arrivedText.text = "나폴리"
                         mediciMap.SetActive(true);
                         sl.gameObject.SetActive(true);
 

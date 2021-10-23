@@ -10,6 +10,8 @@ public class Cjj_Player : MonoBehaviour
     public GameObject Enemy;
     public int enemynumber = 0;
 
+    public bool Notenemy = false;
+
     private void Awake()
     {
         instance = this;
@@ -57,17 +59,38 @@ public class Cjj_Player : MonoBehaviour
     }
     public void EnemyEvent()
     {
-        float x = Random.Range(-2, 2);
-        float z = Random.Range(1, 2);
-        float y = transform.position.y;
+        float x = transform.position.x + Random.Range(-2, 2);
+        float z = transform.position.z + Random.Range(2, 3);
+        //float x = transform.position.x;
+        //float z = transform.position.z;
+        float y = transform.position.y-0.5f;
 
         Vector3 origin = new Vector3(x, y, z);
+        //origin.Normalize();
         if (enemynumber < 1)
         {
-            GameObject enemy = Instantiate(Enemy);
-            //enemy.transform.position = transform.position + transform.forward * 3;
-            enemy.transform.position = transform.position + origin;
-            enemynumber++;
+            if (Notenemy == false)
+            {
+                GameObject enemy = Instantiate(Enemy);
+                //enemy.transform.position = transform.position + transform.forward * 3;
+                enemy.transform.position = transform.position + origin;
+                enemynumber++;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Room"))
+        {
+            Notenemy = true;
+        }       
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Room"))
+        {
+            Notenemy = false;
         }
     }
 }

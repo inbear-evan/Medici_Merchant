@@ -65,19 +65,27 @@ public class FindDestination : MonoBehaviour
         }
     }
 
+    bool findExitChk = false;
+    public void PathFindExit()
+    {
+        if (D.activeSelf)
+        {
+            naviYON.SetActive(true);
+            findExitChk = true;
+        }
+    }
+
     public void naviOut()
     {
         //D.GetComponent<MeshRenderer>().enabled = false;
         //text.text = "µµÂø";
-        D.SetActive(false);
-        naviYON.SetActive(false);
-        routeLine.SetActive(false);
-        miniMap.SetActive(false);
-        storeObj.SetActive(true);
-        for (int i = 0; i < 5; i++)
-        {
-            storeObj.transform.GetChild(i).gameObject.SetActive(dpBtn.destinationIndex == i);
-        }
+        if (D.activeSelf)  D.SetActive(false);
+        if (naviYON.activeSelf) naviYON.SetActive(false);
+        if (routeLine.activeSelf) routeLine.SetActive(false);
+        if (miniMap.activeSelf) miniMap.SetActive(false);
+        if(!storeObj.activeSelf) storeObj.SetActive(true);
+
+       
 
         storeObj.transform.parent.GetChild(0).gameObject.SetActive(false);
         storeObj.transform.parent.GetChild(1).gameObject.SetActive(false);
@@ -86,6 +94,18 @@ public class FindDestination : MonoBehaviour
         storeObj.transform.parent.GetChild(4).gameObject.SetActive(false);
 
         Cjj_CloudSpawnManager.instance.SPAWN = true;
+        if (findExitChk)
+        {
+            naviYON.transform.parent.GetChild(6).gameObject.SetActive(false);
+            findExitChk = false;
+        }
+        else
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                storeObj.transform.GetChild(i).gameObject.SetActive(dpBtn.destinationIndex == i);
+            }
+        }
     }
 
     public void naviDontGo()

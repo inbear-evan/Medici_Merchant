@@ -28,9 +28,14 @@ public class Cjj_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMoneySteal();
+        //PlayerMoneySteal();
         //
         transform.LookAt(Cjj_Player.instance.transform.position);
+
+        if(Cjj_Player.instance.Notenemy == true)
+        {
+            Destroy(gameObject);
+        }
     }
 
     //public GameObject damages;
@@ -50,7 +55,7 @@ public class Cjj_Enemy : MonoBehaviour
             nohit = true;
             if (enemyHP.HP > 0)
             {
-                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("die") && enemyHP.HP != 0)
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("die") && enemyHP.HP != 0 && Cjj_Player.instance.Notenemy == false)
                 {
                     //µ·À» »©¾Ò´Â ¾Ö´Ï¸ÅÀÌ¼Ç
                     anim.SetTrigger("attack");
@@ -64,7 +69,7 @@ public class Cjj_Enemy : MonoBehaviour
     public void hitpos()
     {
         Vector3 pos = cam.transform.position + (cam.transform.forward * 2f);
-        transform.position = new Vector3(pos.x, transform.position.y, pos.z);
+        transform.position = new Vector3(pos.x, transform.position.y-0.5f, pos.z);
     }
     public void stealdie()
     {
@@ -96,6 +101,7 @@ public class Cjj_Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
+        PlayerMoneySteal();
         count = 1;
         nohit = false;
         Cjj_Player.instance.enemynumber--;

@@ -19,7 +19,7 @@ public class Cjj_CloudSpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnnumber <= 2 && SPAWN == false)
+        if (spawnnumber <= 2 && SPAWN == false && Cjj_Player.instance.Notenemy == false)
         {
             GameObject enemyspawn = Instantiate(spawnmanager);
             enemyspawn.transform.position = EnemyRandomPosition();
@@ -49,9 +49,8 @@ public class Cjj_CloudSpawnManager : MonoBehaviour
 
         Ray ray = new Ray(origin, Vector3.down);
         RaycastHit hitlnfo;
+        
         if (Physics.Raycast(ray, out hitlnfo)) { }
         return hitlnfo.point;
-
-
     }
 }

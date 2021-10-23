@@ -20,7 +20,6 @@ public class QR : MonoBehaviour
     public Slider statusSlider;
 
     GameObject cam;
-    public TMP_Text txt;
 
     //public GameObject dpBtnManager;
 

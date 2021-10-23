@@ -11,6 +11,7 @@ TagManager:
   - STORESLOT
   - BAGSLOT
   - STORE
+  - Ground
   layers:
   - Default
   - TransparentFX

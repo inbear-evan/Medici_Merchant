@@ -27,32 +27,34 @@ public class Cjj_SpawnManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Room"))
+        if (other.gameObject.CompareTag("Room"))
         {
             Destroy(gameObject);
         }
         if (other.CompareTag("MainCamera"))
         {
-            
             //ttt.text = "Collusion";//test
-            Destroy(gameObject,2);
+            Destroy(gameObject);
             Cjj_Player.instance.EnemyEvent();
         }
     }
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.CompareTag("Room"))
-    //    {
-    //        Cjj_CloudSpawnManager.instance.SPAWN = true;
-    //    }
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Room"))
-    //    {
-    //        Cjj_CloudSpawnManager.instance.SPAWN = false;
-    //    }
-    //}
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Room"))
+        {
+            Cjj_CloudSpawnManager.instance.SPAWN = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Room"))
+        {
+            Cjj_CloudSpawnManager.instance.SPAWN = false;
+        }
+    }
+
 
     private void OnDestroy()
     {
