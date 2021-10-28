@@ -25,7 +25,8 @@ public class DestinationBtn : MonoBehaviour
     public Sprite[] destCheckPin;
 
     string[] countryName;
-    
+
+    public GameObject saveUI;
     
     // Start is called before the first frame update
     void Start()
@@ -63,13 +64,13 @@ public class DestinationBtn : MonoBehaviour
 
     public void OpenDestinationPanel()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         DpPanel.SetActive(true);
     }
 
     public void CloseDestinationPanel()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         InitSettings();
         DpPanel.SetActive(false);
     }
@@ -145,7 +146,13 @@ public class DestinationBtn : MonoBehaviour
     public void SetDesitionaion()
     {
         cam.GetComponent<FindPosition>().destination = cam.GetComponent<FindPosition>().mediciMap.transform.GetChild(0).GetChild(destinationIndex);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         DpPanel.SetActive(false);
+    }
+
+    public void UICloseBtn()
+
+    {
+        saveUI.SetActive(false);
     }
 }

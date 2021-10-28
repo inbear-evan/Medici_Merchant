@@ -39,7 +39,7 @@ public class YH_StoreInteraction : MonoBehaviour
                 RaycastHit hitInfo;
 
 
-                if (Physics.Raycast(ray, out hitInfo, 10))
+                if (Physics.Raycast(ray, out hitInfo, 100))
                 {
                     //storeIndex = -1;
                     if (hitInfo.collider != null)

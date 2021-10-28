@@ -43,6 +43,7 @@ public class QR : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hitInfo;
         int layer = 1 << LayerMask.NameToLayer("NADA");
+       
         if (Physics.Raycast(ray, out hitInfo, 2, layer))
         {
             //if (hitInfo.transform.CompareTag("NADA"))
@@ -64,10 +65,16 @@ public class QR : MonoBehaviour
         Time.timeScale = 1;
         SYEUI.UM.panel.SetActive(false);
         //um.panel.SetActive(false);
-
-        if (trackedManager.GetComponent<ARTrackedImageManager>().enabled)
+        //trackedManager.GetComponent<ARTrackedImageManager>().enabled = true;
+        //if (trackedManager.GetComponent<ARTrackedImageManager>().enabled)
         {
+
+
+
             trackedManager.GetComponent<FindPosition>().markerIndex = -1;
+            //trackedManager.GetComponent<FindPosition>().mediciMap.transform.position = Vector3.zero;
+            //trackedManager.GetComponent<FindPosition>().mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+
             CH.gameObject.SetActive(true);
             Cjj_CloudSpawnManager.instance.SPAWN = false;
             itemBag.SetActive(false);
@@ -90,6 +97,8 @@ public class QR : MonoBehaviour
             GetComponent<FindDestination>().storeObj.transform.parent.GetChild(2).gameObject.SetActive(true);
             GetComponent<FindDestination>().storeObj.transform.parent.GetChild(3).gameObject.SetActive(true);
             GetComponent<FindDestination>().storeObj.transform.parent.GetChild(4).gameObject.SetActive(true);
+
+
         }
     }
 

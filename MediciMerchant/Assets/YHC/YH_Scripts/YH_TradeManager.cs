@@ -10,8 +10,6 @@ public class YH_TradeManager : MonoBehaviour
     // 상점일때
     // 가방일때
 
-
-
     /// <summary> 
     /// 0  1  2  3  4  5
     /// A  B  X  Y  L  R
@@ -32,6 +30,8 @@ public class YH_TradeManager : MonoBehaviour
     private void Update()
     {
         YH_InvenManager.instance.goldAmount.text = YH_InvenManager.instance.gold.ToString();
+        SaveManager.instance.gold = YH_InvenManager.instance.gold;
+        SaveManager.instance.item[itemNum] = (int.Parse(bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text));
     }
     public void tradeStoreNBag()
     {
@@ -76,7 +76,7 @@ public class YH_TradeManager : MonoBehaviour
                     break;
             }
 
-            if (YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemQuantity > 0)
+            if (YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemQuantity > 0 && ((YH_InvenManager.instance.gold - (int)YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice) > 0))
             {
                 YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemQuantity--;
 
@@ -133,6 +133,9 @@ public class YH_TradeManager : MonoBehaviour
                 {
                     bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text =
                         (int.Parse(bagItem.transform.GetChild(itemNum).GetChild(0).GetComponent<Text>().text) - 1).ToString();
+                    //갯수 저장
+                    
+
                     if (itemIndex != -1)
                     {
                         YH_InvenManager.instance.gold += (int)(YH_ShopManager.instance.stores[storesIndex].InStoreItems[itemsIndex].ItemPrice / 2);

@@ -54,7 +54,7 @@ public class FindDestination : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 int layer = 1 << LayerMask.NameToLayer("DESTINATION");
                 RaycastHit hitInfo;
-                if (Physics.Raycast(ray, out hitInfo, 30, layer))
+                if (Physics.Raycast(ray, out hitInfo, 10, layer))
                 {
                     // QR.QM.trackedManager.SetActive(false);
                     //QR.QM.CH.enabled = false;

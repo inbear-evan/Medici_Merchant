@@ -28,8 +28,8 @@ public class Cjj_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //PlayerMoneySteal();
-        //
+        PlayerMoneySteal();
+
         transform.LookAt(Cjj_Player.instance.transform.position);
 
         if(Cjj_Player.instance.Notenemy == true)
@@ -44,6 +44,7 @@ public class Cjj_Enemy : MonoBehaviour
         currenttime = currenttime + Time.deltaTime;
         if (currenttime >= time)
         {
+            currenttime = 0;
             /*//¿©±â¿¡ µ·À» »©¾Ò´Â ±×¸²?
             GameObject damageimage = Instantiate(damages);
             damageimage.transform.position = transform.position;
@@ -101,7 +102,7 @@ public class Cjj_Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
-        PlayerMoneySteal();
+        //PlayerMoneySteal();
         count = 1;
         nohit = false;
         Cjj_Player.instance.enemynumber--;

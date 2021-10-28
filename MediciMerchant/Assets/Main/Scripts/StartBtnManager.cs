@@ -35,4 +35,11 @@ public class StartBtnManager : MonoBehaviour
     {
         SceneManager.LoadScene("LoadingScene");
     }
+
+    public void RestartPPrefabs()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("StoreGold", -1);
+        PlayerPrefs.Save();
+    }
 }

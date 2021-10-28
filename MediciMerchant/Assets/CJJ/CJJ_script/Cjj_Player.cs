@@ -59,8 +59,8 @@ public class Cjj_Player : MonoBehaviour
     }
     public void EnemyEvent()
     {
-        float x = transform.position.x + Random.Range(-2, 2);
-        float z = transform.position.z + Random.Range(2, 3);
+        float x = transform.position.x + Random.Range(-1, 1);
+        float z = transform.position.z + Random.Range(1, 1.5f);
         //float x = transform.position.x;
         //float z = transform.position.z;
         float y = transform.position.y-0.5f;

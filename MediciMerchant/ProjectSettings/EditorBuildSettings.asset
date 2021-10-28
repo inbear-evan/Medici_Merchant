@@ -8,15 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/YHC/02.Scenes/StartScene2.unity
     guid: f61b89406578a3e47bb0d58dedc93df2
-  - enabled: 0
-    path: Assets/Main/Scene/StartScene.unity
-    guid: 0f769e272a578754ebb72be9a6a55a6d
   - enabled: 1
     path: Assets/Main/Scene/LoadingScene.unity
     guid: 8f7e9f96639add64e97b2bf98fdba99b
   - enabled: 1
     path: Assets/Main/Scene/MainScene.unity
     guid: 30ecb7f958b848442b610c4d8195534d
+  - enabled: 0
+    path: Assets/Main/Scene/SwipeTest.unity
+    guid: 80eff027abc3ade468def87729382f74
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 206e74aa8b6a913418d16dcc6340aa1b, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 28c655193233a744d88fbcbbfb2f81b6, type: 2}

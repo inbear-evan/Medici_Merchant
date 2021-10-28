@@ -26,13 +26,16 @@ public class FindPosition : MonoBehaviour
     public DestinationBtn dpBtn;
     public Slider sl;
     public bool slCheck = false;
+
+    public Text originPtTxt;
     public int markerIndex = -1;
-    //public Transform panelDestination;
-    //public Transform currentPt;
-    
+    public int firstRecogPosition = -1;
     private void Awake()
     {
+
         //currentPt.gameObject.SetActive(false);
+        markerIndex = -1;
+        firstRecogPosition = -1;
         lr.enabled = false;
         mediciMap.SetActive(false);
         miniMap.SetActive(false);
@@ -49,7 +52,6 @@ public class FindPosition : MonoBehaviour
         }
         //arrivedText.text = "마커 검색";
     }
-
     private void OnEnable()
     {
         arTim.trackedImagesChanged += OnStepChange;
@@ -58,16 +60,17 @@ public class FindPosition : MonoBehaviour
     {
         arTim.trackedImagesChanged -= OnStepChange;
     }
-
     private void OnStepChange(ARTrackedImagesChangedEventArgs obj)
     {
+        //originPtTxt.text = transform.GetChild(0).position.ToString();
+        originPtTxt.text = markerIndex.ToString();
         float DestDistance = Vector3.Distance(player.position, destination.position);
         if (DestDistance < 1f)
         //if (!slCheck)
         {
             //arrivedText.text = "도착";
             storeObj.SetActive(true);
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 storeObj.transform.GetChild(i).gameObject.SetActive(dpBtn.destinationIndex == i);
             }
@@ -78,10 +81,13 @@ public class FindPosition : MonoBehaviour
             sl.gameObject.SetActive(false);
             nada.SetActive(false);
             Cjj_CloudSpawnManager.instance.SPAWN = true;
+
+            //transform.position = transform.GetChild(0).position;
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
-            if(markerIndex != -1)
+            if (markerIndex != -1)
                 GetComponent<NavManager>().DrawPathLine(player.position, destination, originPt[markerIndex], lr);
         }
         // 0 naples
@@ -91,7 +97,6 @@ public class FindPosition : MonoBehaviour
         // 4 florence
         for (int i = 0; i < obj.updated.Count; i++)
         {
-
             ARTrackedImage markerImg = obj.updated[i];
             if (markerImg.trackingState == TrackingState.Tracking)
             {
@@ -103,6 +108,7 @@ public class FindPosition : MonoBehaviour
                     //currentPt.position = panelDestination.GetChild(1).position;
                     //currentPt.gameObject.SetActive(true);
                     markerIndex = 0;
+
                     //markerIndex = 3;
                     if (QR.QM.qrRecog())
                     {
@@ -121,6 +127,17 @@ public class FindPosition : MonoBehaviour
 
                         fd.D.SetActive(true);
                         nada.SetActive(false);
+
+                        mediciMap.transform.position = new Vector3(player.transform.position.x, mediciMap.transform.position.y, player.transform.position.z);
+                        mediciMap.transform.position -= new Vector3(originPt[markerIndex].position.x, 0, originPt[markerIndex].position.z);
+                        mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        //mediciMap.GetComponent<SyncMap>().localCompass.eulerAngles = new Vector3(0, 0, 0);
+                        //mediciMap.GetComponent<SyncMap>().worldCompass.eulerAngles = new Vector3(0, 0, 0);
+
+                        //transform.GetChild(0).position = transform.position = originPt[markerIndex].transform.position;
+                        //transform.GetChild(0).rotation = transform.rotation = Quaternion.identity;
+
+                        //transform.GetChild(0).position = originPt[markerIndex].transform.position;
                     }
                 }
                 else if (markerImg.referenceImage.name == "Rome")
@@ -142,6 +159,15 @@ public class FindPosition : MonoBehaviour
 
                         fd.D.SetActive(true);
                         nada.SetActive(false);
+                        mediciMap.transform.position = new Vector3(player.transform.position.x, mediciMap.transform.position.y, player.transform.position.z);
+                        mediciMap.transform.position -= new Vector3(originPt[markerIndex].position.x, 0, originPt[markerIndex].position.z);
+                        mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                        //mediciMap.transform.position = new Vector3(-originPt[markerIndex].transform.position.x, -1, -originPt[markerIndex].transform.position.z);
+                        //mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        //transform.GetChild(0).position = transform.position = originPt[markerIndex].transform.position;
+                        //transform.GetChild(0).rotation = transform.rotation = Quaternion.identity;
+                        //transform.GetChild(0).position = originPt[markerIndex].transform.position;
                     }
                 }
                 else if (markerImg.referenceImage.name == "Venice")
@@ -163,6 +189,21 @@ public class FindPosition : MonoBehaviour
 
                         fd.D.SetActive(true);
                         nada.SetActive(false);
+
+
+                        mediciMap.transform.position = new Vector3(player.transform.position.x, mediciMap.transform.position.y, player.transform.position.z);
+                        mediciMap.transform.position -= new Vector3(originPt[markerIndex].position.x, 0, originPt[markerIndex].position.z);
+                        mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                        //mediciMap.transform.position = transform.position;
+                        //mediciMap.transform.rotation = Quaternion.identity;
+
+                        //transform.GetChild(0).position = transform.position = originPt[markerIndex].transform.position;
+                        //transform.GetChild(0).rotation = transform.rotation = Quaternion.identity;
+
+                        //mediciMap.transform.position = originPt[markerIndex].transform.position + new Vector3(originPt[markerIndex].transform.position.x, 0, originPt[markerIndex].transform.position.z);
+                        //mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        //transform.GetChild(0).position = originPt[markerIndex].transform.position;
                     }
                 }
                 else if (markerImg.referenceImage.name == "Milan")
@@ -185,6 +226,20 @@ public class FindPosition : MonoBehaviour
 
                         fd.D.SetActive(true);
                         nada.SetActive(false);
+
+                        mediciMap.transform.position = new Vector3(player.transform.position.x, mediciMap.transform.position.y, player.transform.position.z);
+                        mediciMap.transform.position -= new Vector3(originPt[markerIndex].position.x, 0, originPt[markerIndex].position.z);
+                        mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                        //mediciMap.transform.position = new Vector3(-originPt[markerIndex].transform.position.x, -1, -originPt[markerIndex].transform.position.z);
+
+                        //mediciMap.transform.position = transform.position;
+                        //mediciMap.transform.rotation = Quaternion.identity;
+
+                        //transform.GetChild(0).position = transform.position = originPt[markerIndex].transform.position;
+                        //transform.GetChild(0).rotation = transform.rotation = Quaternion.identity;
+
+                        //transform.GetChild(0).position = originPt[markerIndex].transform.position;
                     }
                 }
                 else if (markerImg.referenceImage.name == "Florence")
@@ -206,11 +261,32 @@ public class FindPosition : MonoBehaviour
 
                         fd.D.SetActive(true);
                         nada.SetActive(false);
+
+                        mediciMap.transform.position = new Vector3(player.transform.position.x, mediciMap.transform.position.y, player.transform.position.z);
+                        mediciMap.transform.position -= new Vector3(originPt[markerIndex].position.x, 0, originPt[markerIndex].position.z);
+                        mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+
+                        //transform.GetChild(0).position = transform.position = originPt[markerIndex].transform.position;
+                        //transform.GetChild(0).rotation = transform.rotation = Quaternion.identity;
+
+                        //mediciMap.transform.position = originPt[markerIndex].transform.position + new Vector3(originPt[markerIndex].transform.position.x,0, originPt[markerIndex].transform.position.z);
+                        //mediciMap.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                        //mediciMap.transform.position = transform.position;
+                        //mediciMap.transform.rotation = Quaternion.identity;
+
+                        //transform.GetChild(0).position = originPt[markerIndex].transform.position;
+
                     }
                 }
             }
         }
         fd.D.transform.position = destination.transform.position;
+        if(firstRecogPosition == -1)
+        {
+            firstRecogPosition = markerIndex;
+        }
     }
 
     //public void Destination()

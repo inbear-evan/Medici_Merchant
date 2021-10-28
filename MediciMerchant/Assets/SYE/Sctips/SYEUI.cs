@@ -7,7 +7,7 @@ public class SYEUI : MonoBehaviour
 {
     public static SYEUI UM;
     public bool isNaviOn = true;
-    public Toggle minimapStatus;
+    //public Toggle minimapStatus;
     public GameObject panel;
     public GameObject minimap;
     public GameObject itemWindow;
@@ -31,26 +31,26 @@ public class SYEUI : MonoBehaviour
     {
          isNaviOn = true;
     }
-    public void Mnmap()
-    {
-        bool status = minimapStatus.isOn;
-        minimap.SetActive(status);
-        //minimap.SetActive(minimapStatus.isOn);
+    //public void Mnmap()
+    //{
+    //    bool status = minimapStatus.isOn;
+    //    minimap.SetActive(status);
+    //    //minimap.SetActive(minimapStatus.isOn);
 
-        //if (status) Debug.Log("Mnmap On");
-        //else Debug.Log("Mnmap Off");
-    }
+    //    //if (status) Debug.Log("Mnmap On");
+    //    //else Debug.Log("Mnmap Off");
+    //}
 
     public void MenuOpen()
     {
         panel.SetActive(panel.activeSelf != true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void MenuClose()
     {
         panel.SetActive(false);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 
   

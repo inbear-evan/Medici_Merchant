@@ -228,6 +228,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressbar: {fileID: 1797361834}
+  img:
+  - {fileID: 21300000, guid: 9f4d62f05a89a094c8b808081e15284a, type: 3}
+  - {fileID: 21300000, guid: a3b2de0f4083f704ab77adedbcc8e40e, type: 3}
+  - {fileID: 21300000, guid: f45434317504dbf4cb3ceab613d65a86, type: 3}
+  - {fileID: 21300000, guid: c9ef598303ff82b40a380cde4f1187c6, type: 3}
+  - {fileID: 21300000, guid: c3109ccfe4b8b724086defd818eea8b2, type: 3}
 --- !u!4 &85709326
 Transform:
   m_ObjectHideFlags: 0
@@ -674,7 +680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb32083eea2a5464db55708b117d175d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

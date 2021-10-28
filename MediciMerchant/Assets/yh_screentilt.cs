@@ -20,7 +20,7 @@ public class yh_screentilt : MonoBehaviour
    
         //if (-Input.gyro.rotationRate.y >= -15)
         {
-            Debug.Log(Input.gyro.rotationRate.y);
+            //Debug.Log(Input.gyro.rotationRate.y);
             transform.Rotate(0, -Input.gyro.rotationRate.y / 2, 0);
         }
     }

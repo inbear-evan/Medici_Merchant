@@ -7,8 +7,10 @@ public class MouseEffect : MonoBehaviour
     public GameObject[] coinPrf;
     float spawnsTime;
     public float defaultTime = 0.05f;
-
+    public AudioSource touchSound;
+    public int viewSize;
     Touch touch;
+
     // Update is called once per frame
     void Update()
     {
@@ -32,8 +34,19 @@ public class MouseEffect : MonoBehaviour
     void CoinCreat()
     {
         int num = Random.Range(0, coinPrf.Length);
-        Vector3 mPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 1));
-        GameObject eff = Instantiate(coinPrf[num], mPosition, Quaternion.identity);
-        Destroy(eff, 1);
+        Vector3 mPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, viewSize));
+        
+        if(touchSound == null)
+        {
+            GameObject eff = Instantiate(coinPrf[num], mPosition, Quaternion.identity);
+            Destroy(eff, 1);
+        }
+        else if (!touchSound.isPlaying)
+        {
+            touchSound.Play();
+            GameObject eff = Instantiate(coinPrf[num], mPosition, Quaternion.identity);
+            Destroy(eff, 1);
+        }
+        
     }
 }

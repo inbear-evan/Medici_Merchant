@@ -27,11 +27,32 @@ public class NEXTLEVEL : MonoBehaviour
     void Start()
     {
         levelUpBtn.gameObject.SetActive(false);
-        LEVEL1.SetActive(true);
-        LEVEL2.SetActive(false);
-        LEVEL3.SetActive(false);
+
+        if (PlayerPrefs.HasKey("storeGold")) gold = PlayerPrefs.GetInt("storeGold");
+        else gold = 0;
+        if (PlayerPrefs.HasKey("storeGrade")) m = PlayerPrefs.GetInt("storeGrade");
+        else m = 1;
+
+        if(m == 1)
+        {
+            LEVEL1.SetActive(true);
+            LEVEL2.SetActive(false);
+            LEVEL3.SetActive(false);
+        }
+        else if(m == 2)
+        {
+            LEVEL1.SetActive(false);
+            LEVEL2.SetActive(true);
+            LEVEL3.SetActive(false);
+        }
+        else if(m == 3)
+        {
+            LEVEL1.SetActive(false);
+            LEVEL2.SetActive(false);
+            LEVEL3.SetActive(true);
+        }
         //Gold.text = "100";
-         //OriginGold.text = Ogold.ToString();
+        //OriginGold.text = Ogold.ToString();
     }
 
     // Update is called once per frame
@@ -42,6 +63,7 @@ public class NEXTLEVEL : MonoBehaviour
         time += Time.deltaTime;
         if (time >= 1)
         {
+            SaveManager.instance.storeGold = gold;
             gold += m;
             time = 0;
         }
@@ -98,28 +120,23 @@ public class NEXTLEVEL : MonoBehaviour
                 }
             }
         }
+        YH_InvenManager.instance.gold = Ogold;
     }
 
     public void GIVEMEGOLD()
     {
         //Debug.Log(Ogold + " " + gold);
+        SaveManager.instance.storeGold = gold;
         Ogold += gold;
         gold = 0;
         YH_InvenManager.instance.gold = Ogold;
+
         //OriginGold.text = Ogold.ToString();
         //OriginGold.text = (Ogold + gold).ToString();
         //gold = 0; 
     }
     public void LevelUp()
     {
-        //if (Ogold >= 20)
-        //{
-        //    LEVEL1.SetActive(false);
-        //    LEVEL2.SetActive(false);
-        //    LEVEL3.SetActive(true);
-        //    levelUpBtn.gameObject.SetActive(false);
-        //    m = 3;
-        //}
         if (Ogold >= level1_value && m == 1)
         {
             LEVEL1.SetActive(false);
@@ -137,6 +154,6 @@ public class NEXTLEVEL : MonoBehaviour
             m = 3;
             levelUpBtn.gameObject.SetActive(false);
         }
-
+        SaveManager.instance.storeGrade = m;
     }
 }

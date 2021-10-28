@@ -7,12 +7,19 @@ using UnityEngine.SceneManagement;
 public class LoadingManager : MonoBehaviour
 {
     public Slider progressbar;
+    public Sprite[] img;
 
     private void Start()
     {
+        int rnd = Random.Range(0, 4);
+        progressbar.gameObject.transform.parent.GetComponent<Image>().sprite = img[rnd];
+        StopCoroutine(LoadScene());
         StartCoroutine(LoadScene());
     }
-
+    private void Update()
+    {
+        
+    }
     IEnumerator LoadScene()
     {
         yield return null;
@@ -36,5 +43,4 @@ public class LoadingManager : MonoBehaviour
             }
         }
     }
-
 }

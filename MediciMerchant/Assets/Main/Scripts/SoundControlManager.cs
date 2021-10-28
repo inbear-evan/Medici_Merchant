@@ -22,12 +22,33 @@ public class SoundControlManager : MonoBehaviour
 
     public AudioSource pencilX;
 
+    public GameObject florenceStore;
+    public AudioSource florenceBGMSound;
+
+    public AudioSource mainSound;
+
+    public GameObject veniceStore;
+    public AudioSource veniceBGMSound;
+
+    public GameObject MilanStore;
+    public AudioSource MilanBGMSound;
+
+    public AudioSource btnSound;
+
     float currentTime = 0;
     // Update is called once per frame
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("effectVolume")) effectSldier.value = PlayerPrefs.GetFloat("effectVolume");
+        if (PlayerPrefs.HasKey("bgmVolume")) BGMSldier.value = PlayerPrefs.GetFloat("bgmVolume");
+    }
     void Update()
     {
         float BGMvalue = BGMSldier.value;
         float effectValue = effectSldier.value;
+
+        if(naplesStore.activeSelf || romeStore.activeSelf || florenceStore.activeSelf) mainSound.volume = 0;
+        else mainSound.volume = BGMvalue;
         currentTime += Time.deltaTime;
         if (naplesStore.activeSelf)
         {
@@ -94,11 +115,55 @@ public class SoundControlManager : MonoBehaviour
             romePersonSound.loop = false;
             romeBGMSound.loop = false;
         }
+
+        if (florenceStore.activeSelf)
+        {
+            
+            if (!florenceBGMSound.isPlaying) florenceBGMSound.Play();
+
+            florenceBGMSound.volume = BGMvalue;
+
+            florenceBGMSound.loop = true;
+        }
+        else
+        {
+            florenceBGMSound.Stop();
+            florenceBGMSound.loop = false;
+        }
+
+        if (veniceStore.activeSelf)
+        {
+            if (!veniceBGMSound.isPlaying) veniceBGMSound.Play();
+            veniceBGMSound.volume = BGMvalue;
+            veniceBGMSound.loop = true;
+        }
+        else
+        {
+            veniceBGMSound.Stop();
+            veniceBGMSound.loop = false;
+        }
+
+        if (MilanStore.activeSelf)
+        {
+            if (!MilanBGMSound.isPlaying) MilanBGMSound.Play();
+            MilanBGMSound.volume = BGMvalue;
+            MilanBGMSound.loop = true;
+        }
+        else
+        {
+            MilanBGMSound.Stop();
+            MilanBGMSound.loop = false;
+        }
     }
 
     public void OnWriteSound()
     {
         pencilX.Stop();
         pencilX.Play();
+    }
+
+    public void CommonBtnSound()
+    {
+        btnSound.Play();
     }
 }

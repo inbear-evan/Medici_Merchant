@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class YH_InvenManager : MonoBehaviour
 {
@@ -28,7 +29,22 @@ public class YH_InvenManager : MonoBehaviour
 
     private void Start()
     {
-        goldAmount.text = gold.ToString();
+        int readGold = PlayerPrefs.GetInt("Gold", -1);
+        //Debug.Log(readGold);
+        if (readGold >= 0)
+        {
+            gold = readGold;
+            //Debug.Log(gold);
+            goldAmount.text = gold.ToString();
+        }
+        else goldAmount.text = gold.ToString();
+
+        bagFrame.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("item1").ToString();
+        bagFrame.transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("item2").ToString();
+        bagFrame.transform.GetChild(3).GetChild(2).GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("item3").ToString();
+        bagFrame.transform.GetChild(3).GetChild(3).GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("item4").ToString();
+        bagFrame.transform.GetChild(3).GetChild(4).GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("item5").ToString();
+        bagFrame.transform.GetChild(3).GetChild(5).GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("item6").ToString();
     }
     public void OpenBag()
     {
